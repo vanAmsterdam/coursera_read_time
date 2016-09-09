@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How long does it take to screen an abstract?</title>
+  <meta charset="utf-8">
+  <meta name="description" content="How long does it take to screen an abstract?">
+  <meta name="author" content="Wouter van Amsterdam">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>How long does it take to screen an abstract?</h1>
+    <h2>Side study of a literature review</h2>
+    <p>Wouter van Amsterdam<br/>Research intern at CIBL-Harvard</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>2. Performing a systematic review</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Systematic reviews are a good source of knowledge, and are referred to often 
+for clinical decision making. </p>
+
+<p>Writing a systematic review though, is not a &#39;light&#39; task and takes:</p>
+
+<ul>
+<li>time</li>
+<li>effort</li>
+</ul>
+
+<p>Putting time and effort in something is ok, but one needs to be able to plan
+ their work. To do so, I&#39;ve created an app that records the time spent on 
+ screening an abstract. The published shiny app uses this data.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>3. Setup</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>During the screening of some 1500 abstracts, the time used to screen was 
+recorded (along with other relevant data). To reading this into R is easy:</p>
+
+<pre><code class="r">library(data.table)
+cur_wd &lt;- getwd(); setwd(&quot;..&quot;)
+screened &lt;- read.csv(&quot;data/screening_time.csv&quot;, header = T, row.names = NULL)
+colnames(screened) &lt;- c(&quot;index&quot;, tail(colnames(screened), -1))
+screened &lt;- data.table(screened)
+setwd(cur_wd)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>4. Data exploration</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Looks like the data is quite lean already.</p>
+
+<pre><code>##    index read_time
+## 1:     1     23.03
+## 2:     2     11.52
+## 3:     3     43.19
+## 4:     4     17.94
+## 5:     5     21.50
+## 6:     6      7.93
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>5. Scatter plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Lets create a scatter plot, is there a trend? To find the model that best fits 
+the data, the user can alter the degree of the polynomial <a href="https://vanamsterdam.shinyapps.io/abstract_sreening_time/">here</a>.</p>
+
+<p><img src="assets/fig/scatter-1.png" alt="plot of chunk scatter"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='2. Performing a systematic review'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='3. Setup'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='4. Data exploration'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='5. Scatter plot'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

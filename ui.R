@@ -16,8 +16,11 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
             wellPanel(p("For a literature review, I needed to screen many (>1000) abstracts.
-                       I was curious how long it was going to take me, so I 
-                        recorded the screening time as I went along. It was
+                       To do this as quickly and lean as possible, I built a
+                        shiny app for that (this is not the app). 
+                        I was curious how long it was going to take me to screen 
+                        all the abstracts, so I 
+                        recorded the screening time per abstract as I went along. It was
                          probable that the screening time would go down after 
                         having screened more abstracts. To visualize this 
                         relationship, I've plotted the screening time vs the 

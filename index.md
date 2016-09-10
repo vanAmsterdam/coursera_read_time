@@ -31,7 +31,7 @@ Putting time and effort in something is ok, but one needs to be able to plan
 ## 3. Setup
 
 During the screening of some 1300 abstracts, the time used to screen was 
-recorded (along with other relevant data). To reading this into R is easy:
+recorded (along with other relevant data). Reading this data into R is easy:
 
 
 ```r

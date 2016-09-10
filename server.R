@@ -18,4 +18,11 @@ shinyServer(function(input, output) {
         })
         
         output$rmse <- renderText({round(summary(fit())$sigma, 2)})
+        
+        output$time_left <- renderText({
+                pred = predict(fit(), newdata = data.frame(
+                        index = 1:100+nrow(screened)))
+                time = round(sum(pred)/60, 0)
+                return(time)
+        })
 })

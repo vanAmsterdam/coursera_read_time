@@ -32,7 +32,7 @@ shinyUI(fluidPage(
                       p("Because this is real-world data, finding the 'perfect' 
                         fit is not a trivial task. 
                         As a user, you get to decide what you think the best polynomial 
-                        degree for this data is. To measure the goodness-
+                        degree for the fit of this data is. To measure the goodness-
                         of fit, the root-mean-squared error (RMSE) is 
                         displayed too")),
       sliderInput("degree",
@@ -46,6 +46,8 @@ shinyUI(fluidPage(
     mainPanel(
       plotOutput("fitPlot"),
       wellPanel(
+              p("Predicted time left to screen an additional 100 abstracts (minutes):"),
+              textOutput("time_left"),
               p("Goodness of fit (RMSE):"),
               textOutput("rmse")
       )

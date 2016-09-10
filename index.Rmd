@@ -30,10 +30,10 @@ Putting time and effort in something is ok, but one needs to be able to plan
 
 ## 3. Setup
 
-During the screening of some 1500 abstracts, the time used to screen was 
+During the screening of some 1300 abstracts, the time used to screen was 
 recorded (along with other relevant data). To reading this into R is easy:
 
-```{r readin, echo = T, results='hide', cache = T}
+```{r readin, echo = T, results='hide', cache = F}
 library(data.table)
 cur_wd <- getwd(); setwd("..")
 screened <- read.csv("data/screening_time.csv", header = T, row.names = NULL)
@@ -61,11 +61,17 @@ head(screened)
 ## 5. Scatter plot
 
 
-Lets create a scatter plot, is there a trend? To find the model that best fits 
-the data, the user can alter the degree of the polynomial [here](https://vanamsterdam.shinyapps.io/abstract_sreening_time/).
+Lets create a scatter plot, is there a trend? Will this help to predict how long 
+the rest of the screening is going to take? To find the model that best fits 
+the data, the user can alter the degree of the polynomial regression line  [here](https://vanamsterdam.shinyapps.io/abstract_sreening_time/).
 
 ```{r scatter, echo=F, results='markup'}
-plot(read_time~index, data = screened, main = "Screening time vs index")
+plot(read_time~index, data = screened, 
+     main = 'Read time per abstract, with polynomial fit',
+     xlab = "Number of abstracts screened",
+     ylab = "Screening time per abstract (in seconds)")
 fit <- lm(read_time ~ poly(index, 1), data = screened)
-lines(x = screened$index, y = fit$fitted.values, col = "red", lwd = 3)
+lines(x = index, y = fit$fitted.values, col = "red", lwd = 3)
+summary(fit)$sigma
+time_left <- sum(predict(fit, newdata = data.frame(index = 1:100+nrow(screened))))/60
 ```

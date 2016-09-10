@@ -69,7 +69,7 @@ for clinical decision making. </p>
     <h2>3. Setup</h2>
   </hgroup>
   <article data-timings="">
-    <p>During the screening of some 1500 abstracts, the time used to screen was 
+    <p>During the screening of some 1300 abstracts, the time used to screen was 
 recorded (along with other relevant data). To reading this into R is easy:</p>
 
 <pre><code class="r">library(data.table)
@@ -109,10 +109,17 @@ setwd(cur_wd)
     <h2>5. Scatter plot</h2>
   </hgroup>
   <article data-timings="">
-    <p>Lets create a scatter plot, is there a trend? To find the model that best fits 
-the data, the user can alter the degree of the polynomial <a href="https://vanamsterdam.shinyapps.io/abstract_sreening_time/">here</a>.</p>
+    <p>Lets create a scatter plot, is there a trend? Will this help to predict how long 
+the rest of the screening is going to take? To find the model that best fits 
+the data, the user can alter the degree of the polynomial regression line  <a href="https://vanamsterdam.shinyapps.io/abstract_sreening_time/">here</a>.</p>
 
-<p><img src="assets/fig/scatter-1.png" alt="plot of chunk scatter"></p>
+<p><img src="figure/scatter-1.png" alt="plot of chunk scatter"></p>
+
+<pre><code>## Error in lines(x = index, y = fit$fitted.values, col = &quot;red&quot;, lwd = 3): object &#39;index&#39; not found
+</code></pre>
+
+<pre><code>## [1] 21.92132
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->

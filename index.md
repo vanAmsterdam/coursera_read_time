@@ -30,7 +30,7 @@ Putting time and effort in something is ok, but one needs to be able to plan
 
 ## 3. Setup
 
-During the screening of some 1500 abstracts, the time used to screen was 
+During the screening of some 1300 abstracts, the time used to screen was 
 recorded (along with other relevant data). To reading this into R is easy:
 
 
@@ -69,7 +69,16 @@ Looks like the data is quite lean already.
 ## 5. Scatter plot
 
 
-Lets create a scatter plot, is there a trend? To find the model that best fits 
-the data, the user can alter the degree of the polynomial [here](https://vanamsterdam.shinyapps.io/abstract_sreening_time/).
+Lets create a scatter plot, is there a trend? Will this help to predict how long 
+the rest of the screening is going to take? To find the model that best fits 
+the data, the user can alter the degree of the polynomial regression line  [here](https://vanamsterdam.shinyapps.io/abstract_sreening_time/).
 
-![plot of chunk scatter](assets/fig/scatter-1.png)
+![plot of chunk scatter](figure/scatter-1.png)
+
+```
+## Error in lines(x = index, y = fit$fitted.values, col = "red", lwd = 3): object 'index' not found
+```
+
+```
+## [1] 21.92132
+```

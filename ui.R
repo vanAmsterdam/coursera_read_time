@@ -25,18 +25,31 @@ shinyUI(fluidPage(
                         having screened more abstracts. To visualize this 
                         relationship, I've plotted the screening time vs the 
                         index of the abstract, and fitted a polynomial."), br(),
-                      p("As a user, you get to decide what the best polynomial 
-                        degree for this fit is")),
+                      p("If you know how long it takes to screen an abstract, 
+                        and count in the fact that this time goes down as you screen more 
+                        abstracts, you can better assess how much time screening 
+                        the rest of the abstracts is going to take you."), br(),
+                      p("Because this is real-world data, finding the 'perfect' 
+                        fit is not a trivial task. 
+                        As a user, you get to decide what you think the best polynomial 
+                        degree for this data is. To measure the goodness-
+                        of fit, the root-mean-squared error (RMSE) is 
+                        displayed too")),
       sliderInput("degree",
                   "Polynomial degree for fit",
                   min = 1,
-                  max = 4,
+                  max = 7,
                   value = 1)
     ),
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("fitPlot")
+      plotOutput("fitPlot"),
+      wellPanel(
+              p("Goodness of fit (RMSE):"),
+              textOutput("rmse")
+      )
+      
     )
   )
 ))
